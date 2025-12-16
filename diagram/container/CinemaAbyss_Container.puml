@@ -1,0 +1,40 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+Person(user, "User", "Cinema-abyss user")
+
+System_Boundary(s, "Cinema-abyss system") {
+  Container(client, "Client Application", $descr="Mobile application, single-page application")
+  Container(gateway, "API Gateway", $descr="Handles routing, authentication, rate limiting")
+  Container(userService, "User Service", $descr="User registration, profile management, authentication")
+  Container(paymentService, "Payment Service", $descr="Subscription management, payment processing")
+  Container(movieService, "Movie Service", $descr="Movie catalog, streaming management")
+  Container(movieMetadataService, "Movie Metadata Service", $descr="Movie information, reviews, ratings")
+  Container(recommendationService, "Recommendation Service", $descr="Movie recommendations")
+
+  ContainerDb(userDb, "Database", $descr="Stores user data")
+  ContainerDb(movieDb, "Database", $descr="")
+  ContainerDb(movieMetadataDb, "Database", $descr="Stores measurements")
+  ContainerDb(s3, "Movie storage", $descr="Stores movie files")
+
+  ContainerQueue(recommendationQueue, "Recommendation Queue", $descr="Handles asynchronous communication with external recommendation engine")
+}
+
+Container_Ext(module, "Smart Home module", $descr="Connectable module (e.g. heating control module)")
+
+Rel(user, client, "Uses")
+
+Rel(client, gateway, "Send requests", "HTTPS/JSON")
+Rel(gateway, userService, "Send requests", "HTTPS/JSON")
+Rel(gateway, paymentService, "", "HTTPS/JSON")
+Rel(gateway, movieService, "Reading measurements, sending control commands", "HTTPS/JSON")
+Rel(gateway, movieMetadataService, "Reading measurements, sending control commands", "HTTPS/JSON")
+Rel(gateway, recommendationService, "Reading measurements, sending control commands", "HTTPS/JSON")
+
+Rel_L(moduleService, module, "Reads, send commands")
+Rel_Neighbor(moduleService, deviceService, "Uses")
+
+Rel(userService, userDb, "Reads/writes", "SQL")
+Rel(deviceService, deviceDb, "Reads/writes", "SQL")
+Rel(moduleService, moduleDb, "Reads/writes", "SQL")
+@enduml

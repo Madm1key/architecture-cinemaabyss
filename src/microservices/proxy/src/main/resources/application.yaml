@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: proxy
+
+app:
+  service:
+    monolith:
+      url: ${MONOLITH_URL}
+    movie-service:
+      url: ${MOVIES_SERVICE_URL}
+
+server:
+  port: 8000

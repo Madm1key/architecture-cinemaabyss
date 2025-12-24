@@ -6,8 +6,8 @@ import org.springframework.web.client.RestClient
 import org.springframework.web.client.support.RestClientAdapter
 import org.springframework.web.service.invoker.HttpServiceProxyFactory
 import org.springframework.web.service.invoker.createClient
-import ru.ildar.yandex.gateway.service.MonolithService
-import ru.ildar.yandex.gateway.service.MovieService
+import ru.ildar.yandex.gateway.service.impl.MonolithService
+import ru.ildar.yandex.gateway.service.impl.MovieService
 
 @Configuration
 class ServiceConfig(private val monolithClient: RestClient, private val moviesClient: RestClient) {

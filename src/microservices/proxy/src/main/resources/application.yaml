@@ -4,8 +4,8 @@ spring:
 
 app:
   gradual:
-    enabled: ${GRADUAL_ENABLED:true}
-    movie-service-percent: ${MOVIES_MIGRATION_PERCENT:10}
+    enabled: ${GRADUAL_MIGRATION:false}
+    movie-service-percent: ${MOVIES_MIGRATION_PERCENT:0}
   service:
     monolith:
       url: ${MONOLITH_URL:http://127.0.0.1:8080}

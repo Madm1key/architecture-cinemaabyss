@@ -5,7 +5,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties
 @ConfigurationProperties(prefix = "app.gradual")
 class GradualProperties(enabled: String, movieServicePercent: Int) {
 
-    val moviePercent = if (enabled == "true") movieServicePercent else 0
+    val moviePercent = if (enabled == "true") movieServicePercent else 100
     val monolithPercent = 100 - moviePercent
 
 }

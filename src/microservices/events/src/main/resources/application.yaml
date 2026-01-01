@@ -1,1 +1,15 @@
-spring.application.name=events
+spring:
+  application:
+    name: events
+  webflux:
+    base-path: /api/events
+  kafka:
+    bootstrap-servers: ${KAFKA_BROKERS:kafka:9092}
+    consumer:
+      group-id: events-service-group
+      auto-offset-reset: earliest
+    listener:
+      missing-topics-fatal: false
+
+server:
+  port: ${PORT:8082}

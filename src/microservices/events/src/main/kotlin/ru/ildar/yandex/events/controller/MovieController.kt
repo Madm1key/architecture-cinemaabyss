@@ -10,9 +10,13 @@ import ru.ildar.yandex.events.kafka.EventProducer
 @RestController
 class MovieController(private val eventProducer: EventProducer) {
 
+    companion object {
+        const val TOPIC = "movie-events"
+    }
+
     @PostMapping("/movie")
     suspend fun createMovieEvent(): ResponseEntity<StatusDto> {
-        eventProducer.sendMessage("hello")
+        eventProducer.sendMessage(TOPIC, "hello")
         return ResponseEntity(StatusDto.SUCCESS, HttpStatus.CREATED)
     }
 

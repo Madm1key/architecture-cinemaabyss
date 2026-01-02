@@ -9,7 +9,6 @@ import ru.ildar.yandex.events.dto.HealthStatusDto
 class HealthController {
 
     @GetMapping("/health")
-    suspend fun getHealth(): ResponseEntity<HealthStatusDto> =
-        ResponseEntity.ok(HealthStatusDto.ok())
+    suspend fun getHealth(): ResponseEntity<HealthStatusDto> = ResponseEntity.ok(HealthStatusDto.OK)
 
 }

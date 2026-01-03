@@ -3,6 +3,7 @@ package ru.ildar.yandex.events.controller
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RestController
 import ru.ildar.yandex.events.dto.StatusDto
 import ru.ildar.yandex.events.kafka.EventProducer
@@ -15,8 +16,8 @@ class MovieController(private val eventProducer: EventProducer) {
     }
 
     @PostMapping("/movie")
-    suspend fun createMovieEvent(): ResponseEntity<StatusDto> {
-        eventProducer.sendMessage(TOPIC, "hello")
+    suspend fun createMovieEvent(@RequestBody body: String): ResponseEntity<StatusDto> {
+        eventProducer.sendMessage(TOPIC, body)
         return ResponseEntity(StatusDto.SUCCESS, HttpStatus.CREATED)
     }
 

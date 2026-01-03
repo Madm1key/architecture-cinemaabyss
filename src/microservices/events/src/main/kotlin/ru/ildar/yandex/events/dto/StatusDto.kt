@@ -4,7 +4,6 @@ data class StatusDto(val status: String) {
 
     companion object {
         val SUCCESS = StatusDto("success")
-        val FAIL = StatusDto("fail")
     }
 
 }

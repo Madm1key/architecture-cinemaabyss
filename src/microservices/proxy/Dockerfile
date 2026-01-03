@@ -2,7 +2,7 @@ FROM gradle:jdk21-alpine AS builder
 WORKDIR /app
 COPY src ./src
 COPY build.gradle ./build.gradle
-RUN --mount=type=cache,target=/root/.gradle gradle bootJar
+RUN gradle bootJar
 
 FROM amazoncorretto:21-alpine3.22-jdk AS backend
 WORKDIR /root

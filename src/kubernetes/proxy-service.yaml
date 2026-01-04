@@ -29,26 +29,6 @@ spec:
           env:
             - name: PORT
               value: "8000"
-            - name: MONOLITH_URL
-              valueFrom:
-                configMapKeyRef:
-                  name: cinemaabyss-config
-                  key: MONOLITH_URL
-            - name: MOVIES_SERVICE_URL
-              valueFrom:
-                configMapKeyRef:
-                  name: cinemaabyss-config
-                  key: MOVIES_SERVICE_URL
-            - name: GRADUAL_MIGRATION
-              valueFrom:
-                configMapKeyRef:
-                  name: cinemaabyss-config
-                  key: GRADUAL_MIGRATION
-            - name: MOVIES_MIGRATION_PERCENT
-              valueFrom:
-                configMapKeyRef:
-                  name: cinemaabyss-config
-                  key: MOVIES_MIGRATION_PERCENT
           envFrom:
             - configMapRef:
                 name: cinemaabyss-config

@@ -31,11 +31,6 @@ spec:
               value: "8082"
             - name: KAFKA_BROKERS
               value: "kafka:9092"
-          envFrom:
-            - configMapRef:
-                name: cinemaabyss-config
-            - secretRef:
-                name: cinemaabyss-secrets
           resources:
             limits:
               cpu: "300m"

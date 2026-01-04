@@ -30,20 +30,28 @@ spec:
             - name: PORT
               value: "8000"
             - name: MONOLITH_URL
-              value: http://monolith:8080
+              valueFrom:
+                configMapKeyRef:
+                  name: cinemaabyss-config
+                  key: MONOLITH_URL
             - name: MOVIES_SERVICE_URL
-              value: http://movies-service:8081
-            - name: EVENTS_SERVICE_URL
-              value: http://events-service:8082
+              valueFrom:
+                configMapKeyRef:
+                  name: cinemaabyss-config
+                  key: MOVIES_SERVICE_URL
             - name: GRADUAL_MIGRATION
-              value: "true"
+              valueFrom:
+                configMapKeyRef:
+                  name: cinemaabyss-config
+                  key: GRADUAL_MIGRATION
             - name: MOVIES_MIGRATION_PERCENT
-              value: "50"
+              valueFrom:
+                configMapKeyRef:
+                  name: cinemaabyss-config
+                  key: MOVIES_MIGRATION_PERCENT
           envFrom:
             - configMapRef:
                 name: cinemaabyss-config
-            - secretRef:
-                name: cinemaabyss-secrets
           resources:
             limits:
               cpu: "300m"

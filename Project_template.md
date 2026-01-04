@@ -136,7 +136,7 @@ jobs:
 
 Для деплоя в kubernetes необходимо залогиниться в docker registry Github'а.
 
-1. Создайте Personal Access Token (PAT) https://github.com/settings/tokens . Создавайте class с
+1. Создайте Personal Access Token (PAT) https://github.com/settings/tokens . Создавайте classic с
    правом read:packages
 2. В src/kubernetes/*.yaml (event-service, monolith, movies-service и proxy-service)  отредактируйте
    путь до ваших образов
@@ -199,7 +199,7 @@ cat .docker/config.json | base64
 
 - Необходимо создать Deployment и Service
 - Доработайте ingress.yaml, чтобы можно было с помощью тестов проверить создание событий
-- Выполните дальшейшие шаги для поднятия кластера:
+- Выполните дальнейшие шаги для поднятия кластера:
 
 1. Создайте namespace:
 

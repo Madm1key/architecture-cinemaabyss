@@ -23,7 +23,7 @@ spec:
         - name: POSTGRES_USER
           valueFrom:
             configMapKeyRef:
-              name: cinemaabyss-config
+              name: cinemaabyss-db-config
               key: DB_USER
         - name: POSTGRES_PASSWORD
           valueFrom:
@@ -33,7 +33,7 @@ spec:
         - name: POSTGRES_DB
           valueFrom:
             configMapKeyRef:
-              name: cinemaabyss-config
+              name: cinemaabyss-db-config
               key: DB_NAME
         resources:
           limits:

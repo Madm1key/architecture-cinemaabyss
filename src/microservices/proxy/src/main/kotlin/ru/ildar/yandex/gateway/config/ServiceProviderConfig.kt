@@ -25,7 +25,7 @@ class ServiceProviderConfig {
     @Bean
     fun userServiceProvider(monolithService: MonolithService): ServiceProvider<User> =
         ServiceProvider<User>().apply {
-            register(ServiceProvider.WeightService(monolithService, 10))
+            register(ServiceProvider.WeightService(monolithService, 100))
         }
 
 }

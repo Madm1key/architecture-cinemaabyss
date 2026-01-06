@@ -10,10 +10,12 @@ class ServiceProvider<T : Health>() {
         val healthyServices = services.filter {
             try {
                 it.service.getHealth().body?.status == true
-            } catch (ignored: Exception) {
+            } catch (_: Exception) {
                 false
             }
         }
+
+        healthyServices.singleOrNull()?.let { return it.service }
 
         check(healthyServices.isNotEmpty()) { "No healthy services available" }
 

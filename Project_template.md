@@ -69,9 +69,11 @@ tests/postman
 Приложите скриншот тестов и скриншот состояния топиков Kafka из UI http://localhost:8090
 
 ##### Результат тестирования
+
 ![tests-result](screenshot/tests-result.png)
 
 ##### Состояние топиков
+
 ![topic-status](screenshot/topic-status.png)
 
 # Задание 3
@@ -331,11 +333,12 @@ postgres-0 1/1 Running
 вывода event-service после вызова тестов.
 
 ##### Вызов movies в k8s
+
 ![api-movies-k8s](screenshot/api-movies-k8s.png)
 
 ##### Логи events-service в k8s
-![events-process-k8s](screenshot/events-processing-k8s.png)
 
+![events-process-k8s](screenshot/events-processing-k8s.png)
 
 # Задание 4
 
@@ -420,6 +423,10 @@ minikube tunnel
 Потом вызовите
 https://cinemaabyss.example.com/api/movies
 и приложите скриншот развертывания helm и вывода https://cinemaabyss.example.com/api/movies
+
+#### Развертывание в helm
+
+![helm-deploy](screenshot/helm.png)
 
 ## Удаляем все
 

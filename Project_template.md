@@ -330,6 +330,13 @@ postgres-0 1/1 Running
 Добавьте сюда скриншота вывода при вызове https://cinemaabyss.example.com/api/movies и скриншот
 вывода event-service после вызова тестов.
 
+##### Вызов movies в k8s
+![api-movies-k8s](screenshot/api-movies-k8s.png)
+
+##### Логи events-service в k8s
+![events-process-k8s](screenshot/events-processing-k8s.png)
+
+
 # Задание 4
 
 Для простоты дальнейшего обновления и развертывания вам как архитектуру необходимо так же

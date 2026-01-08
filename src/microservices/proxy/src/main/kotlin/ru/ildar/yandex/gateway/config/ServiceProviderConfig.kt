@@ -4,10 +4,10 @@ import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import ru.ildar.yandex.gateway.properties.GradualProperties
 import ru.ildar.yandex.gateway.service.Movie
-import ru.ildar.yandex.gateway.service.ServiceProvider
 import ru.ildar.yandex.gateway.service.User
 import ru.ildar.yandex.gateway.service.impl.MonolithService
 import ru.ildar.yandex.gateway.service.impl.MovieService
+import ru.ildar.yandex.gateway.service.impl.ServiceProvider
 
 @Configuration
 class ServiceProviderConfig {

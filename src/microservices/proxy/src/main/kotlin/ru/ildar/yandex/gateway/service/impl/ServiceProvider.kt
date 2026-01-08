@@ -1,5 +1,6 @@
-package ru.ildar.yandex.gateway.service
+package ru.ildar.yandex.gateway.service.impl
 
+import ru.ildar.yandex.gateway.service.Health
 import kotlin.random.Random
 
 class ServiceProvider<T : Health>() {

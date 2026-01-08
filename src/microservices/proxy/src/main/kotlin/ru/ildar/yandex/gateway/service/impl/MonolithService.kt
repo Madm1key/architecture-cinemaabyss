@@ -40,10 +40,10 @@ interface MonolithService : Movie, User, Payment, Subscription {
     @PostExchange("/api/payments")
     override fun createPayment(@RequestBody payment: CreatePaymentDto): PaymentDto
 
-    @GetExchange("/api/payments")
+    @GetExchange("/api/subscriptions")
     override fun getSubscription(@RequestParam id: String): SubscriptionDto
 
-    @PostExchange("/api/payments")
+    @PostExchange("/api/subscriptions")
     override fun createSubscription(@RequestBody payment: CreateSubscriptionDto): SubscriptionDto
 
 }

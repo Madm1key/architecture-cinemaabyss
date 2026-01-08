@@ -21,7 +21,7 @@ class GradualProperties(enabled: String, movieServicePercent: Int) {
 
     @PostConstruct
     fun postConstruct() {
-        log.error(toString())
+        log.info(toString())
     }
 
 }

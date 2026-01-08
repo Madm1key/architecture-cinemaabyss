@@ -13,7 +13,8 @@ import ru.ildar.yandex.gateway.service.impl.ServiceProvider
 class MovieController(private val serviceProvider: ServiceProvider<Movie>) {
 
     @GetMapping("/api/movies/health")
-    fun getHealth(): ResponseEntity<StatusDto> = serviceProvider.getService().getHealth()
+    fun getHealth(): ResponseEntity<StatusDto> =
+        ResponseEntity.ok(serviceProvider.getService().getHealth())
 
     @GetMapping("/api/movies")
     fun getMovies(): ResponseEntity<List<MovieDto>> = ResponseEntity.ok(

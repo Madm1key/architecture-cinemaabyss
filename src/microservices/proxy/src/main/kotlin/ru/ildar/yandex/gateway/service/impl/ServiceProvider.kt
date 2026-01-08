@@ -10,7 +10,7 @@ class ServiceProvider<T : Health>() {
     fun getService(): T {
         val healthyServices = services.filter {
             try {
-                it.service.getHealth().body?.status == true
+                it.service.getHealth().status
             } catch (_: Exception) {
                 false
             }

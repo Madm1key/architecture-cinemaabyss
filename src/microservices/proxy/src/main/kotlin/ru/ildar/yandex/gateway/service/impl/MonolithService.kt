@@ -1,6 +1,5 @@
 package ru.ildar.yandex.gateway.service.impl
 
-import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.service.annotation.GetExchange
@@ -14,7 +13,7 @@ import ru.ildar.yandex.gateway.service.User
 interface MonolithService : Movie, User, Payment, Subscription {
 
     @GetExchange("/health")
-    override fun getHealth(): ResponseEntity<StatusDto>
+    override fun getHealth(): StatusDto
 
     @GetExchange("/api/movies")
     override fun getMovies(): List<MovieDto>

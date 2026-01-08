@@ -4,6 +4,8 @@ import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import ru.ildar.yandex.gateway.properties.GradualProperties
 import ru.ildar.yandex.gateway.service.Movie
+import ru.ildar.yandex.gateway.service.Payment
+import ru.ildar.yandex.gateway.service.Subscription
 import ru.ildar.yandex.gateway.service.User
 import ru.ildar.yandex.gateway.service.impl.MonolithService
 import ru.ildar.yandex.gateway.service.impl.MovieService
@@ -25,6 +27,18 @@ class ServiceProviderConfig {
     @Bean
     fun userServiceProvider(monolithService: MonolithService): ServiceProvider<User> =
         ServiceProvider<User>().apply {
+            register(ServiceProvider.WeightService(monolithService, 100))
+        }
+
+    @Bean
+    fun paymentServiceProvider(monolithService: MonolithService): ServiceProvider<Payment> =
+        ServiceProvider<Payment>().apply {
+            register(ServiceProvider.WeightService(monolithService, 100))
+        }
+
+    @Bean
+    fun subscriptionServiceProvider(monolithService: MonolithService): ServiceProvider<Subscription> =
+        ServiceProvider<Subscription>().apply {
             register(ServiceProvider.WeightService(monolithService, 100))
         }
 

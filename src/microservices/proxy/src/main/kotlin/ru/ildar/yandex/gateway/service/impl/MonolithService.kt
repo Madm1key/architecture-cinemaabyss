@@ -7,9 +7,11 @@ import org.springframework.web.service.annotation.GetExchange
 import org.springframework.web.service.annotation.PostExchange
 import ru.ildar.yandex.gateway.dto.*
 import ru.ildar.yandex.gateway.service.Movie
+import ru.ildar.yandex.gateway.service.Payment
+import ru.ildar.yandex.gateway.service.Subscription
 import ru.ildar.yandex.gateway.service.User
 
-interface MonolithService : Movie, User {
+interface MonolithService : Movie, User, Payment, Subscription {
 
     @GetExchange("/health")
     override fun getHealth(): ResponseEntity<StatusDto>
@@ -31,5 +33,17 @@ interface MonolithService : Movie, User {
 
     @PostExchange("/api/users")
     override fun createUser(@RequestBody user: CreateUserDto): UserDto
+
+    @GetExchange("/api/payments")
+    override fun getPayment(@RequestParam id: String): PaymentDto
+
+    @PostExchange("/api/payments")
+    override fun createPayment(@RequestBody payment: CreatePaymentDto): PaymentDto
+
+    @GetExchange("/api/payments")
+    override fun getSubscription(@RequestParam id: String): SubscriptionDto
+
+    @PostExchange("/api/payments")
+    override fun createSubscription(@RequestBody payment: CreateSubscriptionDto): SubscriptionDto
 
 }

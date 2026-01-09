@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
       - name: movies-service
-        image: ghcr.io/db-exp/cinemaabysstest/movies-service:latest
+        image: ghcr.io/madm1key/architecture-cinemaabyss/movies-service:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 8081
@@ -33,7 +33,7 @@ spec:
           value: "postgres://$(DB_USER):$(DB_PASSWORD)@$(DB_HOST):$(DB_PORT)/$(DB_NAME)?sslmode=disable"
         envFrom:
         - configMapRef:
-            name: cinemaabyss-config
+            name: cinemaabyss-db-config
         - secretRef:
             name: cinemaabyss-secrets
         resources:

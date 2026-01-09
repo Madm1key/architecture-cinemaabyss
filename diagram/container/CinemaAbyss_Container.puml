@@ -1,0 +1,49 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+Person(user, "User", "Cinema-abyss user")
+
+System_Boundary(s, "Cinema-abyss system") {
+  Container(client, "Client Application", $descr="Mobile application, single-page application")
+
+  Container(gateway, "API Gateway", $descr="Handles routing, authentication, rate limiting")
+
+  Container(userService, "User Service", $descr="User registration, profile management, authentication")
+  Container(paymentService, "Payment Service", $descr="Subscription management, payment processing")
+  Container(movieService, "Movie Service", $descr="Movie catalog, streaming management")
+  Container(movieMetadataService, "Movie Metadata Service", $descr="Movie information, reviews, ratings")
+  Container(recommendationService, "Recommendation Service", $descr="Movie recommendations")
+
+  ContainerDb(userDb, "Database", $descr="Stores user data")
+  ContainerDb(movieDb, "Database", $descr="Stores movie data")
+  ContainerDb(movieMetadataDb, "Database", $descr="Stores movie metadata")
+
+  ContainerDb(movieStorage, "Movie storage", $descr="Stores movie files")
+
+  ContainerQueue(recommendationQueue, "Recommendation Queue", $descr="Handles asynchronous communication with external recommendation engine")
+}
+
+Container_Ext(processingService, "External Processing Service", $descr="Precessing payments")
+Container_Ext(recommendationEngine, "External Recommendation Engine", $descr="Recommendation engine")
+
+Rel(user, client, "Uses")
+
+Rel(client, gateway, "Send requests", "HTTPS/JSON")
+
+Rel(gateway, userService, "Send requests", "HTTPS/JSON")
+Rel(gateway, paymentService, "Send requests", "HTTPS/JSON")
+Rel(gateway, movieService, "Send requests", "HTTPS/JSON")
+Rel(gateway, movieMetadataService, "Send requests", "HTTPS/JSON")
+Rel(gateway, recommendationService, "Send requests", "HTTPS/JSON")
+
+Rel(paymentService, processingService, "Send requests", "HTTPS/JSON")
+
+Rel(recommendationService, recommendationQueue, "Reads messages", "HTTPS/JSON")
+Rel(recommendationEngine, recommendationQueue, "Sends messages", "HTTPS/JSON")
+
+Rel(userService, userDb, "Reads/writes", "SQL")
+Rel(movieService, movieDb, "Reads/writes", "SQL")
+Rel(movieMetadataService, movieMetadataDb, "Reads/writes", "SQL")
+
+Rel(movieService, movieStorage, "Reads/writes", "File Storage API")
+@enduml

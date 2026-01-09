@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: events
+  webflux:
+    base-path: /api/events
+  kafka:
+    bootstrap-servers: ${KAFKA_BROKERS:127.0.0.1:9092}
+
+server:
+  port: ${PORT:8082}

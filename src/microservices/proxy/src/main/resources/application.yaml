@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: proxy
+
+app:
+  gradual:
+    enabled: ${GRADUAL_MIGRATION:true}
+    movie-service-percent: ${MOVIES_MIGRATION_PERCENT:50}
+  service:
+    monolith:
+      url: ${MONOLITH_URL:http://127.0.0.1:8080}
+    movie-service:
+      url: ${MOVIES_SERVICE_URL:http://127.0.0.1:8081}
+
+server:
+  port: ${PORT:8000}
